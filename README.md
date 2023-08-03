@@ -2,4 +2,4 @@
 
 version 1.0\
 basic console game\
-best of 5\
+best of 5
