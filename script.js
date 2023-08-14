@@ -1,10 +1,11 @@
 // keep track of each players # of wins
 let userWins = 0;
 let compWins = 0;
+
 console.log("---------------- Rock Paper Scissors ----------------")
 console.log("Games are best of 5 rounds");
 
-while (userWins < 5 && compWins < 5) {
+for (let i = 0; i < 5; i++) {
     let compChoice = getComputerChoice(); 
     let userChoice = getUserChoice().toLowerCase(); // get and turn user choice to lowercase 
 
@@ -23,15 +24,19 @@ while (userWins < 5 && compWins < 5) {
 
     // print the score
     console.log("The score is " + userWins + "-" + compWins);
+    console.log("-----------------------------------------------------");
 }
 
 // print who won the game 
 // print who is winning
 if(userWins > compWins) {
-    console.log("You won");
+    console.log("You won the game");
+}
+else if (userWins < compWins) {
+    console.log("You lost the game");
 }
 else {
-    console.log("You lost");
+    console.log("You tied the game with the computer");
 }
 console.log("-----------------------------------------------------");
 
