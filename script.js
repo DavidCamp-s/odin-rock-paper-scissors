@@ -3,6 +3,7 @@ const Score = document.querySelector("#score");
 container.appendChild(score);
 
 
+Score.textContent = "score is now 0 - 0";
 
 document.querySelector(".rock").addEventListener("click", function() {playRound("rock", getComputerChoice())});
 document.querySelector(".paper").addEventListener("click", function() {playRound("paper", getComputerChoice())});
@@ -55,10 +56,6 @@ function getComputerChoice() {
     if (num == 3) return "scissors";
 }
 
-function getUserChoice() {
-    //return prompt("Enter your choice");
-}
-
 function playRound(userChoice, compChoice) {
     //output what each opponent chose before saying who won
     console.log("You chose: " + userChoice + " | The computer chose: " + compChoice);
@@ -95,8 +92,4 @@ function playRound(userChoice, compChoice) {
             return false;
         }
     }
-}
-
-function buttonPress(option) {
-    playRound(option, getComputerChoice());
 }
