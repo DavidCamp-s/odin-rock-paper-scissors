@@ -1,26 +1,33 @@
 const container = document.querySelector(".new-container");
 const Score = document.querySelector("#score");
-container.appendChild(score);
+const winner = document.createElement("p");
+const options = document.createElement("p");
+
+container.appendChild(Score);
+container.appendChild(winner);
+container.appendChild(options);
+
+let compScore = 0;
+let userScore = 0;
 
 
-Score.textContent = "score is now 0 - 0";
-
-document.querySelector(".rock").addEventListener("click", function() {playRound("rock", getComputerChoice())});
-document.querySelector(".paper").addEventListener("click", function() {playRound("paper", getComputerChoice())});
-document.querySelector(".scissors").addEventListener("click", function() {playRound("scissors", getComputerChoice());});
 
 
-let compChoice = getComputerChoice(); 
-let userChoice = getUserChoice().toLowerCase(); // get and turn user choice to lowercase 
+document.querySelector(".rock").addEventListener("click", function() {
+    let compChoice = getComputerChoice();
+    winner.textContent = playRound("rock", compChoice);
+});
+document.querySelector(".paper").addEventListener("click", function() {
+    winner.textContent = playRound("paper", getComputerChoice())
+});
+document.querySelector(".scissors").addEventListener("click", function() {
+    winner.textContent = playRound("scissors", getComputerChoice());
+});
 
 
-// check for a tie
-if (compChoice == userChoice) {
-    console.log("You and the computer tied");
-}
 
 // if no tie then play game regularly
-else if (playRound(userChoice,compChoice)) {
+if (playRound(userChoice,compChoice)) {
     userWins++;
 }
 else {
@@ -45,9 +52,6 @@ else {
 }
 
 
-
-
-
 function getComputerChoice() {
     // generates a random number 1-3
     const num = Math.floor(Math.random() * 3) + 1;
@@ -57,6 +61,8 @@ function getComputerChoice() {
 }
 
 function playRound(userChoice, compChoice) {
+    let string = "";
+
     //output what each opponent chose before saying who won
     console.log("You chose: " + userChoice + " | The computer chose: " + compChoice);
 
@@ -64,32 +70,32 @@ function playRound(userChoice, compChoice) {
     //then return true or false based on player winning or not
     if (userChoice == "rock"){
         if (compChoice == "scissors") {
-            console.log("Rock beats scissors you win");
-            return true;
+            return "Rock beats scissors you win";
         }
         if (compChoice == "paper") {
-            console.log("Rock doesnt beat paper you lose");
-            return false;
+            return "Rock doesnt beat paper you lose";
         }
     }
     if (userChoice == "paper"){
         if (compChoice == "rock") {
-            console.log("Paper beats rock you win");
-            return true;
+            return "Paper beats rock you win";
         }
         if (compChoice == "scissors") {
-            console.log("Paper doesnt beat scissors you lose");
-            return false;
+            return "Paper doesnt beat scissors you lose";
         }
     }
     if (userChoice == "scissors" || userChoice == "scissor"){
         if (compChoice == "paper") {
-            console.log("Scissors beats paper you win");
-            return true;
+            return "Scissors beats paper you win";
         }
         if (compChoice == "rock") {
-            console.log("Scissors doesnt beat rock you lose")
-            return false;
+            return "Scissors doesnt beat rock you lose";
         }
     }
+
+    if (userChoice == compChoice){
+        return "You tied with the computer";
+    }
+
+    return string;
 }
