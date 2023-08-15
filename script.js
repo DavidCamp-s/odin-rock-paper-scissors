@@ -1,31 +1,35 @@
-// keep track of each players # of wins
-let userWins = 0;
-let compWins = 0;
+const container = document.querySelector(".new-container");
+const Score = document.querySelector("#score");
+container.appendChild(score);
 
-console.log("---------------- Rock Paper Scissors ----------------")
-console.log("Games are best of 5 rounds");
 
-for (let i = 0; i < 5; i++) {
-    let compChoice = getComputerChoice(); 
-    let userChoice = getUserChoice().toLowerCase(); // get and turn user choice to lowercase 
 
-    // check for a tie
-    if (compChoice == userChoice) {
-        console.log("You and the computer tied");
-    }
+document.querySelector(".rock").addEventListener("click", function() {playRound("rock", getComputerChoice())});
+document.querySelector(".paper").addEventListener("click", function() {playRound("paper", getComputerChoice())});
+document.querySelector(".scissors").addEventListener("click", function() {playRound("scissors", getComputerChoice());});
 
-    // if no tie then play game regularly
-    else if (playRound(userChoice,compChoice)) {
-        userWins++;
-    }
-    else {
-        compWins++;
-    }
 
-    // print the score
-    console.log("The score is " + userWins + "-" + compWins);
-    console.log("-----------------------------------------------------");
+let compChoice = getComputerChoice(); 
+let userChoice = getUserChoice().toLowerCase(); // get and turn user choice to lowercase 
+
+
+// check for a tie
+if (compChoice == userChoice) {
+    console.log("You and the computer tied");
 }
+
+// if no tie then play game regularly
+else if (playRound(userChoice,compChoice)) {
+    userWins++;
+}
+else {
+    compWins++;
+}
+
+// print the score
+console.log("The score is " + userWins + "-" + compWins);
+console.log("-----------------------------------------------------");
+
 
 // print who won the game 
 // print who is winning
@@ -38,7 +42,9 @@ else if (userWins < compWins) {
 else {
     console.log("You tied the game with the computer");
 }
-console.log("-----------------------------------------------------");
+
+
+
 
 
 function getComputerChoice() {
@@ -50,7 +56,7 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-    return prompt("Enter your choice");
+    //return prompt("Enter your choice");
 }
 
 function playRound(userChoice, compChoice) {
@@ -89,4 +95,8 @@ function playRound(userChoice, compChoice) {
             return false;
         }
     }
+}
+
+function buttonPress(option) {
+    playRound(option, getComputerChoice());
 }
