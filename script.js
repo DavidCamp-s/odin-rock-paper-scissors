@@ -15,49 +15,55 @@ let games = 0;
 
 
 document.querySelector(".rock").addEventListener("click", function() {
-    let compChoice = getComputerChoice();
+    if (compScore < 5 && userScore < 5) {
+        let compChoice = getComputerChoice();
 
-    let result = playRound("rock", compChoice)
-    winner.textContent = result;
+        let result = playRound("rock", compChoice)
+        winner.textContent = result;
 
-    if (result.includes("win")) {
-        userScore++;
-    } else if (result.includes("lose")) {
-        compScore++;
+        if (result.includes("win")) {
+            userScore++;
+        } else if (result.includes("lose")) {
+            compScore++;
+        }
+
+        Score.textContent = "The score is " + userScore + " - " + compScore;
+        gamesPlayed.textContent = games++ + " game(s) played";
     }
-
-    Score.textContent = "The score is " + userScore + " - " + compScore;
-    gamesPlayed.textContent = games++ + " game(s) played";
 });
 document.querySelector(".paper").addEventListener("click", function() {
-    let compChoice = getComputerChoice();
+    if (compScore < 5 && userScore < 5) {
+        let compChoice = getComputerChoice();
 
-    let result = playRound("paper", compChoice);
-    winner.textContent = result;
+        let result = playRound("paper", compChoice);
+        winner.textContent = result;
 
-    if (result.includes("win")) {
-        userScore++;
-    } else if (result.includes("lose")) {
-        compScore++;
+        if (result.includes("win")) {
+            userScore++;
+        } else if (result.includes("lose")) {
+            compScore++;
+        }
+
+        Score.textContent = "The score is " + userScore + " - " + compScore;
+        gamesPlayed.textContent = games++ + " game(s) played";
     }
-
-    Score.textContent = "The score is " + userScore + " - " + compScore;
-    gamesPlayed.textContent = games++ + " game(s) played";
 });
 document.querySelector(".scissors").addEventListener("click", function() {
-    let compChoice = getComputerChoice();
+    if (compScore < 5 && userScore < 5) {
+        let compChoice = getComputerChoice();
 
-    let result = playRound("scissors", compChoice)
-    winner.textContent = result;
+        let result = playRound("scissors", compChoice)
+        winner.textContent = result;
 
-    if (result.includes("win")) {
-        userScore++;
-    } else if (result.includes("lose")) {
-        compScore++;
+        if (result.includes("win")) {
+            userScore++;
+        } else if (result.includes("lose")) {
+            compScore++;
+        }
+
+        Score.textContent = "The score is " + userScore + " - " + compScore;
+        gamesPlayed.textContent = games++ + " game(s) played";
     }
-
-    Score.textContent = "The score is " + userScore + " - " + compScore;
-    gamesPlayed.textContent = games++ + " game(s) played";
 });
 
 
