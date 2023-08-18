@@ -1,27 +1,63 @@
-const container = document.querySelector(".new-container");
+const container = document.querySelector(".result");
 const Score = document.querySelector("#score");
 const winner = document.createElement("p");
 const options = document.createElement("p");
+const gamesPlayed = document.createElement("p");
 
 container.appendChild(Score);
 container.appendChild(winner);
 container.appendChild(options);
+container.appendChild(gamesPlayed);
 
 let compScore = 0;
 let userScore = 0;
-
-
+let games = 0;
 
 
 document.querySelector(".rock").addEventListener("click", function() {
     let compChoice = getComputerChoice();
-    winner.textContent = playRound("rock", compChoice);
+
+    let result = playRound("rock", compChoice)
+    winner.textContent = result;
+
+    if (result.includes("win")) {
+        userScore++;
+    } else if (result.includes("lose")) {
+        compScore++;
+    }
+
+    Score.textContent = "The score is " + userScore + " - " + compScore;
+    gamesPlayed.textContent = games++ + " game(s) played";
 });
 document.querySelector(".paper").addEventListener("click", function() {
-    winner.textContent = playRound("paper", getComputerChoice())
+    let compChoice = getComputerChoice();
+
+    let result = playRound("paper", compChoice);
+    winner.textContent = result;
+
+    if (result.includes("win")) {
+        userScore++;
+    } else if (result.includes("lose")) {
+        compScore++;
+    }
+
+    Score.textContent = "The score is " + userScore + " - " + compScore;
+    gamesPlayed.textContent = games++ + " game(s) played";
 });
 document.querySelector(".scissors").addEventListener("click", function() {
-    winner.textContent = playRound("scissors", getComputerChoice());
+    let compChoice = getComputerChoice();
+
+    let result = playRound("scissors", compChoice)
+    winner.textContent = result;
+
+    if (result.includes("win")) {
+        userScore++;
+    } else if (result.includes("lose")) {
+        compScore++;
+    }
+
+    Score.textContent = "The score is " + userScore + " - " + compScore;
+    gamesPlayed.textContent = games++ + " game(s) played";
 });
 
 
