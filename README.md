@@ -1,5 +1,6 @@
 # odin-rock-paper-scissors
 
-version 1.0\
-basic console game\
+version 2.0\
+rock paper scissors game with buttons\
+score updates on screen
 best of 5
